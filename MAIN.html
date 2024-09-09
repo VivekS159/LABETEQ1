@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog Lover's Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 0;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            font-size: 18px;
+        }
+        nav a:hover {
+            background-color: #0056b3;
+            border-radius: 5px;
+        }
+        #container {
+            margin-top: 20px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="MAIN.html">Home</a>
+            <a href="signup.html">Sign Up</a>
+        </nav>
+    </header>
+    
+    <h1>Dog Lover's Gallery</h1>
+    <div id="container">
+        <img id="dogImage" src="" alt="Random Dog" />
+        <br/>
+        <button onclick="fetchRandomDog()">Fetch Random Dog</button>
+    </div>
+
+    <script>
+        // Function to fetch and display a random dog image from the Dog CEO API
+        function fetchRandomDog() {
+            fetch('https://dog.ceo/api/breeds/image/random')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('dogImage').src = data.message;
+                })
+                .catch(error => console.error('Error fetching dog image:', error));
+        }
+        
+        // Fetch a random dog image when the page loads
+        fetchRandomDog();
+    </script>
+</body>
+</html>
